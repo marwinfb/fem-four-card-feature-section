@@ -1,0 +1,173 @@
+@import url("https://unpkg.com/modern-css-reset/dist/reset.min.css");
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 200;
+  src: url("../assets/fonts/poppins-v21-latin-200.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/poppins-v21-latin-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../assets/fonts/poppins-v21-latin-600.woff2") format("woff2");
+}
+
+:root {
+  --color-primary-red: hsl(0, 78%, 62%);
+  --color-primary-cyan: hsl(180, 62%, 55%);
+  --color-primary-orange: hsl(34, 97%, 64%);
+  --color-primary-blue: hsl(212, 86%, 64%);
+  --color-neutral-very-dark-blue: hsl(234, 12%, 34%);
+  --color-neutral-grayish-blue: hsl(229, 6%, 66%);
+  --color-neutral-very-light-gray: hsl(0, 0%, 98%);
+
+  --font-primary: "Poppins", sans-serif;
+}
+
+:is(h1, h2, h3) {
+  font-weight: 600;
+  color: var(--color-neutral-very-dark-blue);
+}
+
+body {
+  background-color: var(--color-neutral-very-light-gray);
+  color: var(--color-neutral-grayish-blue);
+  font: 400 .9375rem/1.4375rem var(--font-primary);
+  padding-inline: 2rem;
+  min-height: 100vh;
+
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  width: 90vw;
+  width: clamp(19.4375rem, 90vw, 69.375rem);
+  margin: 5rem auto;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  max-width: 33.75rem;
+  margin: 0 auto;
+}
+
+.header__headline {
+  font-weight: 200;
+  line-height: 1.2;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-block-end: 1rem;
+}
+
+.header__headline span {
+  font-weight: 700;
+  display: block;
+}
+
+.header__description {
+  font-weight: 400;
+  font-size: .9375rem;
+  line-height: 1.5625rem;
+  padding-inline: 1rem;
+}
+
+.cards {
+  margin-block-start: 4rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "supervisor team calculator"
+    "supervisor karma calculator";
+  gap: 1.875rem;
+}
+
+.card__item--theme-supervisor {
+  border-top: .25rem solid var(--color-primary-cyan);
+  grid-area: supervisor;
+  align-self: center;
+}
+
+.card__item--theme-team-builder {
+  border-top: .25rem solid var(--color-primary-red);
+}
+
+.card__item--theme-karma {
+  border-top: .25rem solid var(--color-primary-orange);
+}
+
+.card__item--theme-calculator {
+  border-top: .25rem solid var(--color-primary-blue);
+  grid-area: calculator;
+  align-self: center;
+}
+
+.card__item {
+  background-color: #fff;
+  border-radius: .5rem;
+  width: min(21.875rem, 100%);
+  min-height: 15.625rem;
+  padding: 2rem;
+  box-shadow: rgba(131, 166, 210, 0.5) 0rem .5rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card__headline {
+  font-size: 1.25rem;
+}
+
+.card__description {
+  font-size: .8125rem;
+  margin-block-start: .375rem;
+}
+
+.card__icon {
+  margin-block-start: auto;
+  align-self: flex-end;
+  width: 4rem;
+  height: 4rem;
+}
+
+@media screen and (max-width: 48rem) {
+  .cards {
+    margin-block-start: 4.75rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "supervisor"
+      "team"
+      "karma"
+      "calculator";
+    place-items: center;
+  }
+
+  .container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .card__icon {
+    width: 3.5625rem;
+    height: 3.5625rem;
+  }
+
+  .card__item {
+    min-height: 13.875rem;
+  }
+}
